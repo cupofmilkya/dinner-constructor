@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class DinnerConstructor {
 
-    HashMap<String, ArrayList<String>> dinnerMap;
-    Random rand;
+    private final HashMap<String, ArrayList<String>> dinnerMap;
+    private final Random rand;
 
     public DinnerConstructor() {
         dinnerMap = new HashMap<>();
@@ -34,8 +34,11 @@ public class DinnerConstructor {
             combos.add(new ArrayList<>());
 
             for (String dish : dishes) {
-                int randomIndex = rand.nextInt(dinnerMap.get(dish).size());
-                combos.get(i).add(dinnerMap.get(dish).get(randomIndex));
+                ArrayList<String> category = dinnerMap.get(dish);
+                ArrayList<String> combo = combos.get(i);
+
+                int randomIndex = rand.nextInt(category.size());
+                combo.add(category.get(randomIndex));
             }
 
         }
